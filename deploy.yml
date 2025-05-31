@@ -4,31 +4,24 @@ on:
   push:
     branches: ["main"]
   workflow_dispatch:
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    
+
     environment:
       name: staging
       url: https://your-staging-url.com
 
     steps:
-      - name: checkout code
-        uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: check if stay.sh exists
-      run: |
-        if [ ! -f ./stay.sh ]; then
-          echo "Error: stay.sh not found!"
-        run: ./stay.sh > stay.log 2>&1 || echo "Error occurred while running stay.sh. Check stay.log for details."
-        fi
+      - name: Make script executable
+        run: chmod +x ./review.sh
 
-    - name: make script executable
-      run: chmod +x ./stay.sh
-
-      - name: run stay script
-        run: ./stay.sh
-
+      - name: Run Deploy Script
+        run: ./review.sh
 
         
           
