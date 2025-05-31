@@ -2,23 +2,17 @@ name: Deploy site
 
 on:
   push:
-    branches: ["main"]
+    branches: [ "main" ]
   workflow_dispatch:
+
 jobs:
-  deploy:
+  secret-test:
     runs-on: ubuntu-latest
-    
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set execute permissions for deploy script
-        run: chmod +x ./deploy.sh
+      - name: Make script executable
+        run: chmod +x ./connect.sh
 
-      - name: Ensure dist directory exists
-        run: mkdir -p dist
-
-      - name: upload Artifact
-        uses: actions/upload-artifact@v3@1e953d8c4e7a347cd53ab56f536cf87b0c06292a
-        with:
-          name: deploy-site
-          path: dist/
+      - name: Run script with secret
+        run: ./connect.sh "${{ secrets.MY_SECRET }}"
