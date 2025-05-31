@@ -6,19 +6,20 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Create a file to upload
-        run: |
-          mkdir dist
-          echo "Hello world" > dist/index.html
+      - name: Make script executable
+        run: chmod +x ./deploy.sh
 
-      - name: Upload artifact
+      - name: Run Deploy Script
+        run: ./deploy.sh
+
+      - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: deployed-files
+          name: deployed-site
           path: dist/
