@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
 
       - name: Set execute permissions for deploy script
         run: chmod +x ./deploy.sh
@@ -18,7 +18,7 @@ jobs:
         run: mkdir -p dist
 
       - name: upload Artifact
-        uses: actions/upload-artifact@v3@1e953d8c4e7a347cd53ab56f536cf87b0c06292a
+        uses: actions/upload-artifact@v2
         with:
           name: deploy-site
           path: dist/
