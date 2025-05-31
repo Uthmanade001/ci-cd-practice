@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-latest
 
     environment:
-      name: staging
-      url: https://your-staging-url.com
+      name: production
+      url: https://your-production-url.com
 
     steps:
       - name: Checkout code
