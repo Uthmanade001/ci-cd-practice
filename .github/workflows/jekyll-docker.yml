@@ -18,7 +18,7 @@ jobs:
           echo "Hello world" > dist/index.html
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: deployed-files
           path: dist/
