@@ -18,7 +18,7 @@ jobs:
         run: mkdir -p dist
 
       - name: upload Artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v2f43a0e5ff2bd294095638e18286ca9a3d1956744
         with:
           name: deploy-site
           path: dist/
