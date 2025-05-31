@@ -9,6 +9,7 @@ jobs:
   secret-test:
     runs-on: ubuntu-latest
     steps:
+
       - uses: actions/checkout@v4
 
       - name: Make script executable
@@ -16,3 +17,7 @@ jobs:
 
       - name: Run script with secret
         run: ./connect.sh "${{ secrets.MY_SECRET }}"
+
+      - name: Show secret in masked form
+        run: echo "My secret is ${{ secrets.MY_SECRET }}"
+
