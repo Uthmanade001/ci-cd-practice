@@ -1,4 +1,4 @@
-name: Deploy site 
+name: Deploy to staging
 
 on:
   push:
@@ -8,17 +8,13 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     
+    environment:
+      - name: staging
+        url: https://your-staging-url.com
+
     steps:
-      - uses: actions/checkout@v3
+      - name: checkout code
+        uses: actions/checkout@v4
 
-      - name: Set execute permissions for deploy script
-        run: chmod +x ./deploy.sh
-
-      - name: Ensure dist directory exists
-        run: mkdir -p dist
-
-      - name: upload Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: deploy-site
-          path: dist/
+        -name: simulate deployment
+        run: echo "Deploying to staging environment..."
